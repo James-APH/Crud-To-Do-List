@@ -3,7 +3,6 @@ use clap::{Parser, Subcommand};
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write, prelude::*};
 use std::path::PathBuf;
-use strum::Display;
 
 #[derive(Parser)]
 #[command(author, version, about, long_about=None)]
@@ -12,7 +11,7 @@ struct Args {
     cmd: Commands,
 }
 
-#[derive(Subcommand, Debug, Display)]
+#[derive(Subcommand, Debug)]
 enum Commands {
     Create { todo: String },
     Read,
