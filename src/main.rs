@@ -2,7 +2,7 @@ use anyhow::{Context, Result};
 use clap::{Parser, Subcommand};
 use comfy_table::modifiers::UTF8_ROUND_CORNERS;
 use comfy_table::presets::UTF8_FULL;
-use comfy_table::*;
+use comfy_table::{Attribute, Cell, Color, ContentArrangement, Table};
 use std::fs::File;
 use std::io::{BufReader, BufWriter, Write, prelude::*};
 use std::path::PathBuf;
@@ -88,7 +88,7 @@ fn main() -> Result<()> {
 
     let mut write_file = BufWriter::new(File::create(path)?);
     for line in todos {
-        writeln!(write_file, "{}", line)?;
+        writeln!(write_file, "{line}")?;
     }
 
     Ok(())
