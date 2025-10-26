@@ -61,11 +61,19 @@ impl Commands {
     }
 
     fn update(id: u16, desc: String, todos: &mut [String]) {
-        todos[id as usize] = desc;
+        if id > u16::try_from(todos.len() - 1).unwrap() {
+            println!("Error! id: [{id}] not in To-do list");
+        } else {
+            todos[id as usize] = desc;
+        }
     }
 
     fn delete(id: u16, todos: &mut Vec<String>) {
-        todos.remove(id as usize);
+        if id > u16::try_from(todos.len() - 1).unwrap() {
+            println!("Error! id: [{id}] not in To-do list");
+        } else {
+            todos.remove(id as usize);
+        }
     }
 }
 
